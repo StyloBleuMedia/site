@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylo Bleu Media</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <div class="logo">Stylo Bleu<span>.</span></div>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="notrehistoire.html">Notre histoire</a></li>
+                <li><a href="nosreseaux.html">Nos réseaux</a></li>
+                <li><a href="passersurnotreplateau.html" class="btn-nav">Passer sur notre plateau</a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-toggle" id="menuToggle">⋮</div>
+    </div>
+</header>
+
+<!-- CTA HERO EN HAUT -->
+<section class="cta hero-cta">
+    <div class="container">
+        <h1>Prêt à passer sur notre podcast ?</h1>
+        <a href="passersurnotreplateau.html" class="btn-primary">Inscris toi dès maintenant</a>
+    </div>
+</section>
+
+<!-- MEDIA 50/50 -->
+<section class="media-growth">
+    <div class="container media-grid">
+
+        <!-- GAUCHE -->
+        <div class="media-video-block">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/wb5HxEI4R0E"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="video-description">
+                <h3>La bande-annonce officielle</h3>
+                <p>
+                    Découvrez Stylo Bleu : le média qui met en lumière
+                    les parcours extraordinaires des Français.
+                </p>
+            </div>
+        </div>
+
+        <!-- DROITE -->
+<div class="media-stats">
+    <h2>Une communauté qui grandit</h2>
+    <p>
+        Stylo Bleu construit une audience engagée.
+        Chaque semaine, de nouveaux passionnés rejoignent l’aventure.
+    </p>
+
+ <div class="stats-grid">
+
+    <div class="stat-card reveal">
+        <div class="stat-number glow" data-target="70">0</div>
+        <div class="stat-label">Abonnés YouTube</div>
+        <div class="stat-badge">+12 cette semaine</div>
+        <div class="growth-line"></div>
+    </div>
+
+    <div class="stat-card reveal">
+        <div class="stat-number glow" data-target="59">0</div>
+        <div class="stat-label">Abonnés Instagram</div>
+        <div class="stat-badge">+10 cette semaine</div>
+        <div class="growth-line"></div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+<!-- NOS CONVICTIONS -->
+<section class="convictions">
+    <div class="container">
+        <div class="section-header">
+            <h2>Nos convictions</h2>
+        </div>
+
+        <div class="convictions-content">
+            <p class="lead">
+                La France regorge de talents que l’on ne met pas assez en avant.
+            </p>
+
+            <p>
+                Nous partons à la rencontre de celles et ceux qui construisent,
+                créent et poursuivent leurs objectifs avec détermination et courage.
+            </p>
+
+            <p>
+                Être fier de son pays commence par célébrer ses talents.
+                Et peut-être qu’un jour, ce sera toi notre invité.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <h3>Stylo Bleu</h3>
+            <p>Le futur de l’interview écrite</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="legal.html">Mentions légales</a>
+            <a href="notrehistoire.html">Notre histoire</a>
+            <a href="nosreseaux.html">Nos réseaux</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Stylo Bleu – Tous droits réservés</p>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("navLinks");
+
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("navLinks");
+
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+
+    /* ===== ANIMATION COMPTEURS LENTE ===== */
+
+    const counters = document.querySelectorAll(".stat-number");
+
+    const animateCounter = (counter) => {
+        const target = +counter.getAttribute("data-target");
+        let count = 0;
+        const duration = 2500; // plus lent (2.5s)
+        const stepTime = 20;
+        const steps = duration / stepTime;
+        const increment = target / steps;
+
+        const update = () => {
+            count += increment;
+            if (count < target) {
+                counter.innerText = Math.floor(count);
+                setTimeout(update, stepTime);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        update();
+    };
+
+    /* ===== APPARITION AU SCROLL ===== */
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                if (entry.target.classList.contains("stat-number")) {
+                    animateCounter(entry.target);
+                }
+            }
+        });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll(".reveal, .stat-number").forEach(el => {
+        observer.observe(el);
+    });
+
+});
+</script>
+
+
+</body>
+</html>
