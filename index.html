@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<div class="particles"></div>
 <header class="navbar">
     <div class="container nav-content">
         <div class="logo">Stylo Bleu<span>.</span></div>
@@ -68,14 +68,14 @@
  <div class="stats-grid">
 
     <div class="stat-card reveal">
-        <div class="stat-number glow" data-target="70">0</div>
+        <div class="stat-number glow" data-target="71">0</div>
         <div class="stat-label">Abonnés YouTube</div>
         <div class="stat-badge">+12 cette semaine</div>
         <div class="growth-line"></div>
     </div>
 
     <div class="stat-card reveal">
-        <div class="stat-number glow" data-target="59">0</div>
+        <div class="stat-number glow" data-target="64">0</div>
         <div class="stat-label">Abonnés Instagram</div>
         <div class="stat-badge">+10 cette semaine</div>
         <div class="growth-line"></div>
@@ -133,33 +133,27 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.getElementById("menuToggle");
-    const nav = document.getElementById("navLinks");
 
-    toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+    /* ===== MENU MOBILE ===== */
 
     const toggle = document.getElementById("menuToggle");
     const nav = document.getElementById("navLinks");
 
-    toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    if(toggle){
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+    }
 
-    /* ===== ANIMATION COMPTEURS LENTE ===== */
+    /* ===== ANIMATION COMPTEURS (PLUS LENT) ===== */
 
     const counters = document.querySelectorAll(".stat-number");
 
     const animateCounter = (counter) => {
         const target = +counter.getAttribute("data-target");
         let count = 0;
-        const duration = 2500; // plus lent (2.5s)
-        const stepTime = 20;
+        const duration = 4000; // PLUS LENT (4 secondes)
+        const stepTime = 30;
         const steps = duration / stepTime;
         const increment = target / steps;
 
@@ -182,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
+
                 if (entry.target.classList.contains("stat-number")) {
                     animateCounter(entry.target);
                 }
@@ -191,6 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal, .stat-number").forEach(el => {
         observer.observe(el);
+    });
+
+    /* ===== LUMIÈRE QUI SUIT LA SOURIS ===== */
+
+    document.addEventListener("mousemove", (e) => {
+        document.body.style.setProperty('--x', e.clientX + 'px');
+        document.body.style.setProperty('--y', e.clientY + 'px');
     });
 
 });
