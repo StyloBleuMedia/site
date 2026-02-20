@@ -6,6 +6,7 @@
     <title>Stylo Bleu Media</title>
 
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="Assets/Img/logo.png" />
 </head>
 
 <body>
@@ -42,8 +43,12 @@
         <!-- GAUCHE -->
         <div class="media-video-block">
             <div class="video-wrapper">
+                <!-- Lazy-load et YouTube no-cookie -->
                 <iframe 
-                    src="https://www.youtube.com/embed/wb5HxEI4R0E"
+                    loading="lazy"
+                    src="https://www.youtube-nocookie.com/embed/wb5HxEI4R0E"
+                    title="Bande-annonce Stylo Bleu"
+                    frameborder="0"
                     allowfullscreen>
                 </iframe>
             </div>
@@ -58,34 +63,32 @@
         </div>
 
         <!-- DROITE -->
-<div class="media-stats">
-    <h2>Une communauté qui grandit</h2>
-    <p>
-        Stylo Bleu construit une audience engagée.
-        Chaque semaine, de nouveaux passionnés rejoignent l’aventure.
-    </p>
+        <div class="media-stats">
+            <h2>Une communauté qui grandit</h2>
+            <p>
+                Stylo Bleu construit une audience engagée.
+                Chaque semaine, de nouveaux passionnés rejoignent l’aventure.
+            </p>
 
- <div class="stats-grid">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number glow" data-target="71">0</div>
+                    <div class="stat-label">Abonnés YouTube</div>
+                    <div class="stat-badge">+12 cette semaine</div>
+                    <div class="growth-line"></div>
+                </div>
 
-    <div class="stat-card reveal">
-        <div class="stat-number glow" data-target="71">0</div>
-        <div class="stat-label">Abonnés YouTube</div>
-        <div class="stat-badge">+12 cette semaine</div>
-        <div class="growth-line"></div>
-    </div>
-
-    <div class="stat-card reveal">
-        <div class="stat-number glow" data-target="64">0</div>
-        <div class="stat-label">Abonnés Instagram</div>
-        <div class="stat-badge">+10 cette semaine</div>
-        <div class="growth-line"></div>
-    </div>
-
-</div>
+                <div class="stat-card reveal">
+                    <div class="stat-number glow" data-target="64">0</div>
+                    <div class="stat-label">Abonnés Instagram</div>
+                    <div class="stat-badge">+10 cette semaine</div>
+                    <div class="growth-line"></div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </section>
-
 <!-- NOS CONVICTIONS -->
 <section class="convictions">
     <div class="container">
